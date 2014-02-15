@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ITP's Javascript club</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript">
+          function unhide(divID) {
+            var item = document.getElementById(divID);
+            if (item) {
+              item.className=(item.className=='hidden')?'unhidden':'hidden';
+            }
+          }
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        
+        <div id = "header">
+        <center><img src = "imgs/javascriptclub.png"></center>
+        <h1>Let's shore up our skills together.</h1>
+        </div>
+        
+    <div id = "main">
+        
+	<h2> Next Meeting: TBA</h2>
+
+	<h2> Topics</h2>
+		<ul>
+			<li><a href = "http://www.tutorialspoint.com/javascript/javascript_syntax.htm">Set Up and Workflow</a></li>
+			<li><a href = "http://en.wikipedia.org/wiki/JavaScript_syntax">Basic Syntax</a></li>
+			<li><a href = "">Glossary</a></li>
+			<li><a href = "">Processing to Javascript</a></li>
+			<li><a href = "javascript:unhide('dom');">What's a DOM?</a></li>
+				<div id= "dom" class="hidden">
+				Choosing your IDE. Recommendations include Sublime
+				</div>
+			<li><a href = "">What's a DOM, and why is it important?</a></li>
+			<li><a href = "">Javascript Library Landscape</a></li>
+		</ul>
+		
+		
+	<h2> Books</h2>
+        <ul>
+	        <li><a href = "">Javascript: The Good Parts</a></li>
+    	    <li><a href = "">Eloquent Javascript</a></li>
+        	<li><a href = ""></a></li>
+        	<li><a href = ""></a></li>
+        	<li><a href = ""></a></li>
+        </ul>
+        
+        
+        <h2> Online Resources</h2>
+            <ul>
+                <li><a href = "">JSFiddle</a></li>
+        	    <li><a href = "http://learn.jquery.com/javascript-101/conditional-code/">Javascript 101 (on JQuery site)</a></li>
+            	<li><a href = ""></a></li>
+            	<li><a href = ""></a></li>
+            	<li><a href = ""></a></li>
+            </ul>
+	<h2> Syllabus for Javascript-based courses</h2>
+        <ul>
+	        <li><a href = "">Creative Javascript</a></li>
+    	    <li><a href = "">Mash-up APIs</a></li>
+        	<li><a href = "">Nature of Code</a></li>
+		</ul>
+		
+     <h2> Documents and Screencasts from Meetings</h2>
+    	<ul>
+    		<li><a href = "">Meeting[0] with Sam Lavigne. Processing to p5</a></li>
+  				<div id= "setup" class="subdiv">
+  					<a href = "https://github.com/antiboredom/p5_tutorial">Download example files</a>
+  				</div>
+  			<li><a href = "">Meeting[1] with David Lobser. Javascript Objects</a></li>
+  				<div id= "setup" class="subdiv">
+  					Download example files
+  				</div>
+  		</ul>
+        
+
+<h2> For questions, please email Pam Liou at pal293@nyu.edu</h2>
+
+
+</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+
+
+
+
+        </script>
+
+
+    </body>
+</html>

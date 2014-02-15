@@ -1,0 +1,252 @@
+
+
+<a href="http://programmers.stackexchange.com/questions/160732/function-declaration-as-var-instead-of-function">var foo = function() or function foo()</a><br>
+<a href="http://en.wikipedia.org/wiki/First-class_function">first class functions</a><br>
+<a href="http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">scoping,hoisting</a><br>
+<a href="http://stackoverflow.com/questions/111102/how-do-javascript-closures-work">closure</a><br>
+<a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/">design patterns</a><br>
+<a href="http://7chan.org/pr/src/OReilly_JavaScript_The_Good_Parts_May_2008.pdf">JS the good parts</a><br>
+<a href="http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them">callbacks</a><br><br>
+open your console<br>
+look at the source
+
+<script>
+
+
+//variable types
+
+var stringy = "I'm a string";
+number = 3
+var maybe = true,
+myArray = [1,2,3,4];
+
+var things = [];
+
+things.push(stringy);
+things.push(number);
+things.push(maybe);
+things.push(myArray);
+things.push({Ithink:"Iam"});
+
+
+for(t in things){
+	console.log(things[t]);
+}
+
+for(t in things){
+	if(typeof things[t] == "string")
+		console.log("I'm a string, no " + things[t]);
+	if(typeof things[t] == "number")
+		console.log("I'm a number: " + things[t]);
+	if(typeof things[t] == "boolean")
+		console.log("I'm a boolean: " + things[t]);
+	if(typeof things[t] == "object")
+		console.log("I'm an object: " + things[t]);
+}
+
+//// array/object weirdnesses
+
+var stuff = [];
+
+stuff[5] = 0;
+
+console.log(stuff[5]);
+console.log(stuff[4]);
+
+for(var i = 0 ; i < 10 ; i+=2){
+	stuff[i] = i;
+}
+
+console.log(stuff);
+console.log(stuff.length);
+
+var stuffInStuff = "";
+var definedStuff = "";
+var definedStuff2 = "";
+
+
+for(var i = 0 ; i < stuff.length ; i++){
+	stuffInStuff+=(stuff[i])+",";
+	if(stuff[i])
+		definedStuff+=stuff[i]+",";
+	if(stuff[i]!=undefined)
+		definedStuff2+=stuff[i]+",";
+
+}
+
+console.log(stuffInStuff);
+console.log(definedStuff);
+console.log(definedStuff2);
+
+stuff[stuff[3]] = "stuffIndex";
+stuff["name"] = "Henry";
+stuff.id = "goodStuff";
+
+console.log(stuff);
+
+console.log(Object.keys(stuff));
+
+stuff[18]=100;
+stuff["19"]=101;
+stuff["twenty"] = 102;
+
+var stuffInStuff = "";
+
+for(var i = 0 ; i < stuff.length ; i++){
+	stuffInStuff+=(stuff[i])+",";
+}
+
+console.log(stuffInStuff);
+
+//// simple function declaration
+
+var bar = function(text) {
+	var txt = text || "hi";
+	return function(){console.log(txt)};
+}
+
+var q = new bar();
+q();
+
+var g = new bar("there");
+g();
+
+bar("friends")();
+
+
+//// more complicated functions
+
+var params = {
+	firstName:"Henry",
+	lastName:"Bland"
+}
+
+function sayIt(params){
+	if(!params) params = {};
+	var first = params.firstName || "Charles",
+	last = params.lastName || "Bodkin",
+	fullName = first + " " + last;
+	return function(){console.log(fullName)}
+}
+
+function sayIt2(params){
+	if(!params) params = {}
+	this.first = params.firstName || "Hillary"
+	this.last = params.lastName || "Tillary"
+	this.say = function(){
+		this.fullName = this.first + " " + this.last
+		console.log(this.fullName)
+	}
+}
+
+function sayItPrivate(params){
+
+	if(!params) params = {};
+
+	var first = params.firstName || "Percy",
+	last = params.lastName || "Dorfman";
+	
+	this.say = function(){
+		var fullName = first + " " + last;
+		console.log(fullName);
+	}
+
+	this.setFirst = function(name){
+		first = name;
+	}
+}
+
+sayIt(params)();
+
+var sayItSimple = new sayIt();
+sayItSimple();
+sayItSimple.first = "Dean";
+sayItSimple();
+
+var sayItObject = new sayIt2();
+sayItObject.say();
+sayItObject.first = "Roger";
+sayItObject.say();
+
+var sayItInPrivate = new sayItPrivate();
+sayItInPrivate.say();
+sayItInPrivate.first = "Edgar";
+sayItInPrivate.say();
+sayItInPrivate.setFirst("Edgar");
+sayItInPrivate.say();
+
+//// callbacks
+
+var words = "that is the way we are one and indivisible";
+
+console.log(words);
+
+doStuff(words,mangle,5);
+doStuff(words,sorter);
+doStuff(words,mixUp,5);
+
+
+
+function doStuff(str,func,amt){
+
+	var amount = amt || 1;
+
+	var wordArray = str.split(" ");
+	
+	for(var i = 0 ; i < amount ; i++){
+		func(wordArray);
+	}
+}
+
+function mangle(arr){
+
+	var newString = "random: ";
+
+	for(var i = 0 ; i < arr.length ; i++){
+
+		var q = Math.floor(Math.random()*arr.length);
+		newString += (arr[q]) + " ";
+	}
+
+	console.log(newString);
+
+}
+
+function sorter(arr){
+
+	var newString = "alphabetical: ";
+	arr.sort();
+
+	for(var i = 0 ; i < arr.length ; i++){
+		newString += (arr[i]) + " ";
+	}
+
+	console.log(newString);
+
+}
+
+function mixUp(arr){
+
+	var newString = "jumble: ";
+	var newWord = [newString];
+
+	for(var i = 0 ; i < arr.length ; i++){
+
+		var wordArray = arr[i].split("");
+		
+		for(var j = wordArray.length ; j > 0 ; j--){
+			
+			var letter = (wordArray.splice(Math.floor(Math.random()*(j)),1));
+			newWord.push(letter);
+			
+		}
+		newWord.push(" ");
+	}
+
+	newString = newWord.join('');
+	console.log(newString);
+
+}
+
+
+</script>
